@@ -33,7 +33,17 @@ class BinaryResponseTest(
         }
                 .andExpect {
                     status { isOk }
-                    }
+                }
+    }
+
+    @Test
+    fun `Return a single JSON object for a document` () {
+        mockMvc.get("/documents/${DOC_ID_1}") {
+            accept(MediaType.parseMediaType("application/vnd.api+json"))
+        }
+                .andExpect {
+                    status { isOk }
+                }
     }
 
     @Test

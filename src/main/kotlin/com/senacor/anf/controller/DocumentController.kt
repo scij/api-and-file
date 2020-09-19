@@ -9,7 +9,6 @@ import io.crnk.core.repository.ResourceRepositoryBase
 import io.crnk.core.resource.list.ResourceList
 import mu.KotlinLogging
 import org.springframework.stereotype.Component
-import org.springframework.web.client.HttpClientErrorException
 import java.util.*
 
 private val log = KotlinLogging.logger {  }
@@ -21,6 +20,7 @@ class DocumentController(
 
     override fun findOne(id: UUID, querySpec: QuerySpec): DocumentResource {
         val doc = documentService.get(id)
+        log.debug("findOne found {}", doc)
         if (doc != null) {
             return doc.toResource()
         } else {
@@ -32,6 +32,7 @@ class DocumentController(
         log.debug("Query spec = {}", querySpec)
         val docs = documentService.getDocuments()
                 .map { it.toResource() }
+        log.debug("FindAll found {}", docs)
         return querySpec.apply(docs)
     }
 }
