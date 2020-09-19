@@ -3,7 +3,6 @@ package com.senacor.anf.controller.model
 import io.crnk.core.resource.annotations.JsonApiField
 import io.crnk.core.resource.annotations.JsonApiId
 import io.crnk.core.resource.annotations.JsonApiResource
-import org.springframework.stereotype.Component
 import java.util.*
 
 @JsonApiResource(

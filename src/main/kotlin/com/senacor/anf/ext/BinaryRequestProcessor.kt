@@ -16,6 +16,7 @@ class BinaryRequestProcessor(moduleContext: Module.ModuleContext?)
     : JsonApiRequestProcessor(moduleContext) {
 
     override fun accepts(context: HttpRequestContext?): Boolean {
+        log.debug("accepts {}", context)
         return context != null && context.accepts(MediaType.APPLICATION_PDF_VALUE)
     }
 

@@ -1,9 +1,7 @@
 package com.senacor.anf.service
 
-import org.springframework.core.io.InputStreamResource
 import org.springframework.stereotype.Service
 import java.util.*
-import kotlin.collections.List
 
 const val DOC_ID_1 = "11111111-1111-1111-1111-111111111111"
 const val DOC_ID_2 = "22222222-2222-2222-2222-222222222222"
@@ -24,12 +22,12 @@ class DocumentService {
 
     fun get(id: UUID): Document? {
         return docs.find {
-            it.id.equals(id)
+            it.id == id
         }
     }
 
-    final fun getClasspathResource(filename: String): ByteArray =
-        this::class.java.getResource(filename).readBytes()
+    final fun getDocumentFromClasspath(filename: String): ByteArray =
+        this::class.java.classLoader.getResourceAsStream(filename).readBytes()
 
 }
 

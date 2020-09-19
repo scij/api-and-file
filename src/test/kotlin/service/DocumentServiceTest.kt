@@ -9,7 +9,7 @@ import java.util.*
 
 class DocumentServiceTest {
 
-    val fix = DocumentService()
+    private val fix = DocumentService()
 
     @Test
     fun `Test find one function for existing doc` () {
@@ -36,5 +36,11 @@ class DocumentServiceTest {
         val docs = fix.getDocuments()
         Assertions.assertNotNull(docs)
         Assertions.assertEquals(docs.size, 2)
+    }
+
+    @Test
+    fun `Test load document` () {
+        val doc = fix.getDocumentFromClasspath("Doc1.pdf")
+        Assertions.assertNotNull(doc)
     }
 }
