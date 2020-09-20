@@ -11,9 +11,9 @@ class DocumentService {
 
     private val docs = listOf(
                 Document(UUID.fromString(DOC_ID_1),
-                        "First Document", ByteArray(0)),
+                        "First Document", getDocumentFromClasspath("Doc1.pdf")),
                 Document(UUID.fromString(DOC_ID_2),
-                        "Second Document", ByteArray(0))
+                        "Second Document", getDocumentFromClasspath("Doc2.pdf"))
     )
 
     fun getDocuments(): Collection<Document> {

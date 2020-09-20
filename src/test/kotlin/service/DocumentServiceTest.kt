@@ -42,5 +42,7 @@ class DocumentServiceTest {
     fun `Test load document` () {
         val doc = fix.getDocumentFromClasspath("Doc1.pdf")
         Assertions.assertNotNull(doc)
+        Assertions.assertEquals(17388, doc.size)
+        Assertions.assertArrayEquals("%PDF".toByteArray(), doc.sliceArray(IntRange(0,3)))
     }
 }
